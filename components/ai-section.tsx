@@ -3,13 +3,20 @@
 import { motion } from "framer-motion"
 import { ChevronRight, Check, Paperclip, Globe, Lightbulb } from "lucide-react"
 
+const providers = [
+  { name: "Google OAuth", isProvider: true, selected: true, icon: "◇" },
+  { name: "GitHub OAuth", isProvider: true, selected: false, icon: "◉" },
+  { name: "Microsoft Entra", isProvider: true, selected: false, icon: "◈" },
+  { name: "Email/Password", isProvider: false, selected: false, icon: "○" },
+  { name: "Magic Links", isProvider: true, selected: false, icon: "◎" },
+  { name: "Passkeys", isProvider: false, selected: false, icon: "○" },
+]
+
 const agents = [
-  { name: "Cursor", isAgent: true, selected: true, icon: "◇" },
-  { name: "GitHub Copilot", isAgent: true, selected: false, icon: "◉" },
-  { name: "Sentry", isAgent: true, selected: false, icon: "◈" },
-  { name: "Leela", isAgent: false, selected: false, icon: "○" },
-  { name: "Codex", isAgent: true, selected: false, icon: "◎" },
-  { name: "Conor", isAgent: false, selected: false, icon: "○" },
+  { name: "Agent 1", isAgent: true, selected: true, icon: "🤖" },
+  { name: "Agent 2", isAgent: true, selected: false, icon: "🤖" },
+  { name: "Agent 3", isAgent: true, selected: false, icon: "🤖" },
+  { name: "Agent 4", isAgent: false, selected: false, icon: "👤" },
 ]
 
 export function AISection() {
@@ -33,7 +40,7 @@ export function AISection() {
             className="flex items-center gap-2 mb-6"
           >
             <div className="w-2 h-2 rounded-full bg-blue-500" />
-            <span className="text-zinc-400 text-sm">Artificial intelligence</span>
+            <span className="text-zinc-400 text-sm">Authentication providers</span>
             <ChevronRight className="w-4 h-4 text-zinc-500" />
           </motion.div>
 
@@ -51,7 +58,7 @@ export function AISection() {
               lineHeight: 1.1,
             }}
           >
-            AI-assisted product development
+            Every auth method your users need
           </motion.h2>
 
           {/* Description */}
@@ -62,8 +69,8 @@ export function AISection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-zinc-400 max-w-md mb-8"
           >
-            <span className="text-white font-medium">Sprint for Agents.</span> Choose from a variety of AI agents and
-            start delegating work, from code generation to other technical tasks.
+            <span className="text-white font-medium">Social logins, enterprise SSO, passwordless.</span> Enable any
+            combination of authentication methods with a single configuration change.
           </motion.p>
 
           {/* Learn more button */}
@@ -74,7 +81,7 @@ export function AISection() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="px-5 py-2.5 bg-zinc-800 text-zinc-300 rounded-lg border border-zinc-700 hover:bg-zinc-700 transition-colors text-sm flex items-center gap-2 mb-16"
           >
-            Learn more
+            View all providers
             <ChevronRight className="w-4 h-4" />
           </motion.button>
 
@@ -137,16 +144,16 @@ export function AISection() {
 
                 {/* Input field */}
                 <div className="bg-zinc-800/50 border border-zinc-700 rounded-t-xl px-5 py-4">
-                  <span className="text-zinc-500 italic">Assign to...</span>
+                  <span className="text-zinc-500 italic">Select auth provider...</span>
                 </div>
 
                 {/* Dropdown options */}
                 <div className="bg-zinc-900/80 border border-t-0 border-zinc-700 rounded-b-xl py-1">
-                  {agents.map((agent, index) => (
+                  {providers.map((provider, index) => (
                     <div
-                      key={agent.name}
+                      key={provider.name}
                       style={
-                        agent.selected
+                        provider.selected
                           ? {
                               transform: "scale(1.04) rotateX(17deg)",
                               background: "linear-gradient(#343434 0%, #2d2d2d 100%)",
@@ -174,15 +181,15 @@ export function AISection() {
                         }}
                       >
                         <div className="flex items-center gap-3">
-                          <span className="text-zinc-400 text-lg">{agent.icon}</span>
-                          <span className={agent.selected ? "text-white font-medium" : "text-zinc-300"}>
-                            {agent.name}
+                          <span className="text-zinc-400 text-lg">{provider.icon}</span>
+                          <span className={provider.selected ? "text-white font-medium" : "text-zinc-300"}>
+                            {provider.name}
                           </span>
-                          {agent.isAgent && (
-                            <span className="text-xs bg-zinc-700 text-zinc-400 px-2 py-0.5 rounded">Agent</span>
+                          {provider.isProvider && (
+                            <span className="text-xs bg-zinc-700 text-zinc-400 px-2 py-0.5 rounded">OAuth</span>
                           )}
                         </div>
-                        {agent.selected && <Check className="w-4 h-4 text-zinc-400" />}
+                        {provider.selected && <Check className="w-4 h-4 text-zinc-400" />}
                       </div>
                     </div>
                   ))}
@@ -202,82 +209,79 @@ export function AISection() {
             <div className="grid grid-cols-1 md:grid-cols-2">
               {/* Left column */}
               <div className="border-t border-r border-b border-zinc-800/60 pt-12 pr-12 pb-16">
-                <h3 className="text-zinc-200 font-medium text-xl mb-3">Self-driving product operations</h3>
+                <h3 className="text-zinc-200 font-medium text-xl mb-3">Smart session management</h3>
                 <p className="text-zinc-500 text-base mb-8">
-                  Streamline your product development workflows with AI assistance for routine, manual tasks.
+                  Automatically detect suspicious activity, enforce session limits, and revoke access instantly.
                 </p>
 
-                {/* Triage Intelligence Card */}
+                {/* Session Intelligence Card */}
                 <div className="bg-zinc-900/30 border border-zinc-800/60 rounded-xl p-5">
                   <div className="flex items-center gap-2 mb-5">
                     <svg className="w-4 h-4 text-zinc-500" viewBox="0 0 16 16" fill="currentColor">
                       <path d="M8 0L9.5 5.5L15 7L9.5 8.5L8 14L6.5 8.5L1 7L6.5 5.5L8 0Z" />
                     </svg>
                     <span className="text-zinc-500 text-sm">
-                      Triage <span className="text-zinc-300">Intelligence</span>
+                      Session <span className="text-zinc-300">Intelligence</span>
                     </span>
                   </div>
 
-                  {/* Suggestions Row */}
+                  {/* Active Sessions Row */}
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="text-zinc-600 text-sm w-20">Suggestions</span>
+                    <span className="text-zinc-600 text-sm w-20">Active</span>
                     <div className="flex items-center gap-2">
                       <span
                         className="flex items-center gap-1.5 rounded-md px-2 py-1 text-sm"
-                        style={{ background: "#7170ff" }}
+                        style={{ background: "#22c55e" }}
                       >
                         <span className="w-4 h-4 bg-white/30 rounded-full" />
-                        <span className="text-white">nan</span>
+                        <span className="text-white">Chrome - MacOS</span>
                       </span>
                       <span className="flex items-center gap-1.5 bg-zinc-800/30 rounded-md px-2 py-1 text-sm text-zinc-600">
                         <span className="w-3 h-3 border border-zinc-700 rounded" />
-                        Mobile App Refactor
-                      </span>
-                      <span className="flex items-center gap-1.5 text-sm text-zinc-700">
-                        <span className="w-2 h-2 bg-zinc-600 rounded-full" />
-                        Slack
+                        Safari - iOS
                       </span>
                     </div>
                   </div>
 
-                  {/* Duplicate Row */}
+                  {/* Location Row */}
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="text-zinc-600 text-sm w-20">Duplicate of</span>
+                    <span className="text-zinc-600 text-sm w-20">Location</span>
+                    <span className="text-zinc-400 text-sm">San Francisco, CA</span>
                   </div>
 
-                  {/* Related Row */}
+                  {/* Risk Row */}
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="text-zinc-600 text-sm w-20">Related to</span>
+                    <span className="text-zinc-600 text-sm w-20">Risk level</span>
+                    <span className="text-emerald-400 text-sm">Low</span>
                   </div>
 
-                  {/* Expanded Suggestion Card */}
+                  {/* Expanded Session Card */}
                   <div className="bg-zinc-800/40 rounded-lg p-4 ml-4">
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="w-5 h-5 bg-zinc-600 rounded-full" />
-                      <span className="text-zinc-300 text-sm font-medium">nan</span>
+                      <span className="w-5 h-5 bg-emerald-600 rounded-full" />
+                      <span className="text-zinc-300 text-sm font-medium">Current session</span>
                     </div>
 
-                    <p className="text-zinc-500 text-xs mb-2">Why this assignee was suggested</p>
+                    <p className="text-zinc-500 text-xs mb-2">Session details</p>
                     <p className="text-zinc-500 text-sm mb-4">
-                      This person was the assignee on previous issues related to performance problems in the mobile app
-                      launch flow
+                      Last active 2 minutes ago. IP address matches previous login patterns.
                     </p>
 
-                    <p className="text-zinc-500 text-xs mb-2">Alternatives</p>
+                    <p className="text-zinc-500 text-xs mb-2">Other devices</p>
                     <div className="flex items-center gap-2 mb-4">
                       <span className="flex items-center gap-1.5 bg-zinc-700/50 rounded-md px-2 py-1 text-sm">
                         <span className="w-4 h-4 bg-zinc-500 rounded-full" />
-                        <span className="text-zinc-400">yann</span>
+                        <span className="text-zinc-400">iPhone 15</span>
                       </span>
                       <span className="flex items-center gap-1.5 bg-zinc-700/50 rounded-md px-2 py-1 text-sm">
                         <span className="w-4 h-4 bg-zinc-500 rounded-full" />
-                        <span className="text-zinc-400">erin</span>
+                        <span className="text-zinc-400">iPad Pro</span>
                       </span>
                     </div>
 
                     <button className="w-full flex items-center justify-center gap-2 bg-zinc-700/50 hover:bg-zinc-600/50 text-zinc-300 text-sm py-2.5 rounded-md transition-colors">
                       <Check className="w-4 h-4" />
-                      Accept suggestion
+                      Revoke other sessions
                     </button>
                   </div>
                 </div>
@@ -285,49 +289,52 @@ export function AISection() {
 
               {/* Right column */}
               <div className="border-t border-b border-zinc-800/60 pt-12 pl-12 pb-16">
-                <h3 className="text-zinc-200 font-medium text-xl mb-3">Sprint MCP</h3>
+                <h3 className="text-zinc-200 font-medium text-xl mb-3">Keylio SDK</h3>
                 <p className="text-zinc-500 text-base mb-8">
-                  Connect Sprint to your favorite tools including Cursor, Claude, ChatGPT, and more.
+                  Drop-in components for React, Next.js, Vue, and more. Get auth running in minutes.
                 </p>
 
-                {/* MCP Code Snippet */}
+                {/* SDK Code Snippet */}
                 <div className="bg-zinc-900/30 border border-zinc-800/60 rounded-xl p-5 font-mono text-sm">
-                  <p className="text-zinc-700 mb-3">//mcp.sprint.app/sse</p>
+                  <p className="text-zinc-700 mb-3">// Install with npm or yarn</p>
                   <div className="space-y-1 mb-6">
                     <p>
-                      <span className="text-orange-400/70">"mcpServers"</span>
-                      <span className="text-zinc-500">: {"{"}</span>
+                      <span className="text-orange-400/70">import</span>
+                      <span className="text-zinc-500"> {"{"} </span>
+                      <span className="text-cyan-400">KeylioProvider</span>
+                      <span className="text-zinc-500"> {"}"} </span>
+                      <span className="text-orange-400/70">from</span>
+                      <span className="text-green-400/70"> &apos;@keylio/react&apos;</span>
                     </p>
-                    <p className="pl-4">
-                      <span className="text-orange-400/70">"sprint"</span>
-                      <span className="text-zinc-500">: {"{"}</span>
-                    </p>
-                    <p className="pl-8">
-                      <span className="text-orange-400/70">"command"</span>
-                      <span className="text-zinc-500">: </span>
-                      <span className="text-green-400/70">"npx"</span>
+                    <p className="pl-0 mt-2">
+                      <span className="text-orange-400/70">import</span>
+                      <span className="text-zinc-500"> {"{"} </span>
+                      <span className="text-cyan-400">SignIn</span>
+                      <span className="text-zinc-500">, </span>
+                      <span className="text-cyan-400">UserButton</span>
+                      <span className="text-zinc-500"> {"}"} </span>
                     </p>
                   </div>
 
-                  {/* Ask Anything Input */}
+                  {/* Component Preview */}
                   <div className="bg-zinc-800/40 rounded-lg p-4">
                     <div className="flex items-center gap-2 mb-4">
                       <span className="w-0.5 h-5 bg-zinc-600" />
-                      <span className="text-zinc-600">Ask anything</span>
+                      <span className="text-zinc-600">Component preview</span>
                     </div>
 
                     <div className="flex items-center gap-2">
                       <button className="flex items-center gap-1.5 border border-zinc-700/60 text-zinc-500 text-sm px-3 py-1.5 rounded-full hover:bg-zinc-700/30 transition-colors">
                         <Paperclip className="w-3.5 h-3.5" />
-                        Attach
+                        SignIn
                       </button>
                       <button className="flex items-center gap-1.5 border border-zinc-700/60 text-zinc-500 text-sm px-3 py-1.5 rounded-full hover:bg-zinc-700/30 transition-colors">
                         <Globe className="w-3.5 h-3.5" />
-                        Search
+                        SignUp
                       </button>
                       <button className="flex items-center gap-1.5 border border-zinc-700/60 text-zinc-500 text-sm px-3 py-1.5 rounded-full hover:bg-zinc-700/30 transition-colors">
                         <Lightbulb className="w-3.5 h-3.5" />
-                        Reason
+                        UserButton
                       </button>
                     </div>
                   </div>

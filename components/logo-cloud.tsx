@@ -15,7 +15,7 @@ export function LogoCloud() {
             transition={{ duration: 0.6 }}
             className="text-lg text-zinc-300 mb-2"
           >
-            Powering the world's best product teams.
+            Trusted by developers who value ownership.
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -24,7 +24,7 @@ export function LogoCloud() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-lg text-zinc-500 mb-16"
           >
-            From next-gen startups to established enterprises.
+            From indie hackers to enterprise teams.
           </motion.p>
 
           <motion.div
@@ -47,7 +47,7 @@ export function LogoCloud() {
             {/* Hover overlay button */}
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
               <div className="px-5 py-2.5 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 rounded-full text-sm text-zinc-300 flex items-center gap-2">
-                Meet our customers
+                See case studies
                 <span aria-hidden="true">›</span>
               </div>
             </div>

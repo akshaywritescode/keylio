@@ -5,7 +5,7 @@ import { ChevronRight, Plus } from "lucide-react"
 
 const featureCards = [
   {
-    title: "Project planning for scrum",
+    title: "Multi-factor authentication built-in",
     illustration: (
       <div className="relative w-full h-full flex items-center justify-center overflow-hidden rounded-lg">
         <svg
@@ -53,7 +53,7 @@ const featureCards = [
     ),
   },
   {
-    title: "Iteration management for scaling",
+    title: "Enterprise SSO with SAML & OIDC",
     illustration: (
       <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
         <img
@@ -66,7 +66,7 @@ const featureCards = [
     ),
   },
   {
-    title: "When precision matters",
+    title: "Complete data sovereignty",
     illustration: (
       <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
         <img
@@ -107,7 +107,7 @@ export function FeatureCardsSection() {
                 lineHeight: 1.1,
               }}
             >
-              Made for modern product teams
+              Built for security-first teams
             </motion.h2>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -117,10 +117,10 @@ export function FeatureCardsSection() {
               className="max-w-md"
             >
               <p className="text-zinc-400 leading-relaxed">
-                Sprint is shaped by the practices and principles that distinguish world-class product teams from the
-                rest: relentless focus, fast execution, and a commitment to the quality of craft.{" "}
+                Keylio is built on the principles that matter most: complete data ownership, enterprise-grade security,
+                and the flexibility to deploy anywhere your compliance requires.{" "}
                 <a href="#" className="text-white inline-flex items-center gap-1 hover:underline">
-                  Make the switch <ChevronRight className="w-4 h-4" />
+                  View documentation <ChevronRight className="w-4 h-4" />
                 </a>
               </p>
             </motion.div>
