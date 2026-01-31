@@ -3,25 +3,29 @@
 import type React from "react"
 import { motion } from "framer-motion"
 import {
-  Inbox,
-  CircleUser,
-  Layers,
-  FolderKanban,
-  LayoutGrid,
   Users,
-  Smartphone,
-  Map,
+  CircleUser,
+  Shield,
+  Building2,
+  LayoutGrid,
+  KeyRound,
+  Activity,
+  Lock,
   FileText,
   ChevronDown,
   ChevronRight,
-  CirclePower,
   Search,
   Plus,
   Link2,
   MoreHorizontal,
-  Sparkles,
   Settings,
   HelpCircle,
+  CirclePower,
+  Layers,
+  FolderKanban,
+  Smartphone,
+  Map,
+  Sparkles,
 } from "lucide-react"
 
 export function DashboardMockup() {
@@ -67,8 +71,8 @@ export function DashboardMockup() {
         {/* Logo */}
         <div className="p-3 border-b border-zinc-800/50">
           <div className="flex items-center gap-2 px-2 py-1.5">
-            <CirclePower className="w-5 h-5 text-white" />
-            <span className="text-white font-semibold text-sm">Sprint</span>
+            <KeyRound className="w-5 h-5 text-white" />
+            <span className="text-white font-semibold text-sm">Keylio</span>
             <ChevronDown className="w-3.5 h-3.5 text-zinc-500 ml-auto" />
           </div>
         </div>
@@ -77,66 +81,66 @@ export function DashboardMockup() {
         <div className="p-3">
           <div className="flex items-center gap-2 px-2.5 py-1.5 bg-zinc-800/50 rounded-md text-zinc-500 text-xs">
             <Search className="w-3.5 h-3.5" />
-            <span>Search...</span>
+            <span>Search users...</span>
             <span className="ml-auto text-[10px] bg-zinc-700/50 px-1.5 py-0.5 rounded">⌘K</span>
           </div>
         </div>
 
         {/* Main nav */}
         <div className="px-3 space-y-0.5">
-          <NavItem icon={Inbox} label="Inbox" badge={3} active />
-          <NavItem icon={CircleUser} label="My Issues" />
+          <NavItem icon={Users} label="Users" badge={128} active />
+          <NavItem icon={Activity} label="Activity" />
         </div>
 
-        {/* Workspace section */}
+        {/* Authentication section */}
         <div className="mt-5 px-3">
           <div className="px-2 py-1 text-[10px] text-zinc-500 font-medium uppercase tracking-wider flex items-center gap-1">
-            Workspace
+            Authentication
           </div>
           <div className="space-y-0.5 mt-1">
-            <NavItem icon={Layers} label="Initiatives" hasSubmenu />
-            <NavItem icon={FolderKanban} label="Projects" hasSubmenu />
-            <NavItem icon={LayoutGrid} label="Views" hasSubmenu />
-            <NavItem icon={Users} label="Teams" hasSubmenu />
+            <NavItem icon={Shield} label="Providers" hasSubmenu />
+            <NavItem icon={Lock} label="Sessions" hasSubmenu />
+            <NavItem icon={LayoutGrid} label="MFA" hasSubmenu />
+            <NavItem icon={Building2} label="Organizations" hasSubmenu />
           </div>
         </div>
 
-        {/* Favorites section */}
+        {/* Configuration section */}
         <div className="mt-5 px-3">
           <div className="px-2 py-1 text-[10px] text-zinc-500 font-medium uppercase tracking-wider flex items-center gap-1">
-            Favorites
+            Configuration
           </div>
           <div className="space-y-0.5 mt-1">
-            <NavItem icon={Smartphone} label="Mobile App" color="text-blue-400" />
-            <NavItem icon={Map} label="Q1 Roadmap" color="text-orange-400" />
-            <NavItem icon={FileText} label="API Docs" color="text-emerald-400" />
+            <NavItem icon={FileText} label="API Keys" color="text-blue-400" />
+            <NavItem icon={CircleUser} label="Webhooks" color="text-orange-400" />
+            <NavItem icon={FileText} label="Audit Logs" color="text-emerald-400" />
           </div>
         </div>
 
-        {/* Teams section */}
+        {/* Organizations section */}
         <div className="mt-5 px-3 flex-1">
           <div className="px-2 py-1 text-[10px] text-zinc-500 font-medium uppercase tracking-wider flex items-center gap-1">
-            Your Teams
+            Organizations
           </div>
           <div className="space-y-0.5 mt-1">
-            <NavItem icon={Sparkles} label="Product" hasSubmenu />
-            <NavItem icon={Settings} label="Engineering" hasSubmenu />
+            <NavItem icon={Building2} label="Acme Corp" hasSubmenu />
+            <NavItem icon={Settings} label="Settings" hasSubmenu />
           </div>
         </div>
 
         {/* Bottom */}
         <div className="p-3 border-t border-zinc-800/50">
-          <NavItem icon={HelpCircle} label="Help & Support" />
+          <NavItem icon={HelpCircle} label="Documentation" />
         </div>
       </motion.div>
 
-      {/* Inbox List */}
+      {/* Users List */}
       <motion.div
         className="w-[320px] h-full bg-zinc-900/40 border-r border-zinc-800/50 flex flex-col shrink-0"
         variants={panelVariants}
       >
         <div className="px-4 py-3 border-b border-zinc-800/50 flex items-center justify-between">
-          <h3 className="text-white font-semibold text-sm">Inbox</h3>
+          <h3 className="text-white font-semibold text-sm">Users</h3>
           <div className="flex items-center gap-2">
             <button className="text-zinc-500 hover:text-white transition-colors">
               <Plus className="w-4 h-4" />
@@ -146,67 +150,67 @@ export function DashboardMockup() {
 
         <div className="flex-1 overflow-auto scrollbar-hide">
           <InboxItem
-            id="ENG-135"
-            title="Refactor sonic crawler"
-            subtitle="nan assigned you"
+            id="usr_2x"
+            title="Sarah Chen"
+            subtitle="sarah@acme.com"
             time="2h"
             avatar="https://i.pravatar.cc/32?img=1"
             status="in-progress"
             active
           />
           <InboxItem
-            id="LLM"
-            title="LLM Chatbot"
-            subtitle="New project update by raissa"
+            id="usr_3y"
+            title="Alex Rivera"
+            subtitle="alex@acme.com"
             time="1d"
             avatar="https://i.pravatar.cc/32?img=2"
-            status="todo"
+            status="done"
             isProject
           />
           <InboxItem
-            id="ENG-159"
-            title="Error uploading images via API"
-            subtitle="SLA breached"
+            id="usr_4z"
+            title="Jordan Smith"
+            subtitle="jordan@startup.io"
             time="2d"
             avatar="https://i.pravatar.cc/32?img=3"
             status="bug"
           />
           <InboxItem
-            id="DES-498"
-            title="Redesign users settings..."
-            subtitle="karri mentioned you"
+            id="usr_5a"
+            title="Emily Watson"
+            subtitle="emily@enterprise.co"
             time="4h"
             avatar="https://i.pravatar.cc/32?img=4"
-            status="todo"
+            status="done"
           />
           <InboxItem
-            id="ENG-160"
-            title="Holtzmann engine is broken"
-            subtitle="You asked to be reminded"
+            id="usr_6b"
+            title="Michael Brown"
+            subtitle="michael@agency.dev"
             time="1w"
             avatar="https://i.pravatar.cc/32?img=5"
-            status="bug"
+            status="done"
           />
           <InboxItem
-            title="Sign up flow experiments"
-            subtitle="Added as project member"
+            title="Lisa Anderson"
+            subtitle="lisa@company.com"
             avatar="https://i.pravatar.cc/32?img=6"
             status="done"
             isProject
           />
           <InboxItem
-            id="MKT-122"
-            title="Design assets for marketing"
-            subtitle="erin marked as Duplicate"
+            id="usr_8d"
+            title="David Kim"
+            subtitle="david@tech.io"
             time="1w"
             avatar="https://i.pravatar.cc/32?img=7"
             status="done"
           />
           <InboxItem
-            title="Homepage v3"
-            subtitle="New project update by paco"
+            title="Anna Garcia"
+            subtitle="anna@startup.co"
             avatar="https://i.pravatar.cc/32?img=8"
-            status="todo"
+            status="in-progress"
             isProject
           />
         </div>
@@ -217,59 +221,52 @@ export function DashboardMockup() {
         {/* Header breadcrumb */}
         <div className="px-5 py-3 border-b border-zinc-800/50 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-1.5 text-xs">
-            <span className="text-zinc-500">Engineering</span>
+            <span className="text-zinc-500">Users</span>
             <span className="text-zinc-600">›</span>
-            <span className="text-emerald-400">Spice harvester</span>
+            <span className="text-emerald-400">Acme Corp</span>
             <span className="text-zinc-600">›</span>
-            <span className="text-zinc-300">ENG-135</span>
+            <span className="text-zinc-300">usr_2x</span>
           </div>
           <MoreHorizontal className="w-4 h-4 text-zinc-500" />
         </div>
 
         {/* Content */}
         <div className="flex-1 p-5 overflow-auto scrollbar-hide">
-          <h2 className="text-white text-xl font-semibold mb-5">Refactor sonic crawler</h2>
+          <h2 className="text-white text-xl font-semibold mb-5">Sarah Chen</h2>
 
-          {/* Code block */}
+          {/* User details */}
           <div className="bg-zinc-900/80 rounded-lg p-4 text-[11px] font-mono mb-5 border border-zinc-800/50">
             <div className="space-y-2">
               <div>
-                <span className="text-zinc-500">Comment.</span>
-                <span className="text-amber-300">documentContent</span>
-                <span className="text-zinc-400"> is defined wrongly. It should be a </span>
-                <span className="text-cyan-300">LazyManyToOne</span>
-                <span className="text-zinc-400"> relation.</span>
+                <span className="text-zinc-500">Email: </span>
+                <span className="text-amber-300">sarah@acme.com</span>
+                <span className="text-emerald-400 ml-2">verified</span>
               </div>
               <div className="mt-3 text-zinc-600">
-                {/* The document content that this comment is associated with. */}
+                {/* User metadata */}
               </div>
               <div>
-                <span className="text-purple-400">@ManyToOne</span>
-                <span className="text-zinc-400">(</span>
-                <span className="text-cyan-300">DocumentContent</span>
-                <span className="text-zinc-400">,</span>
-                <span className="text-amber-300">comments</span>
-                <span className="text-zinc-400">,</span>
-                <span className="text-amber-300">cascade</span>
-                <span className="text-zinc-400">:</span>
-                <span className="text-orange-300">true</span>
-                <span className="text-zinc-400">,</span>
-                <span className="text-amber-300">nullable</span>
-                <span className="text-zinc-400">:</span>
-                <span className="text-orange-300">false</span>
+                <span className="text-zinc-500">Organization: </span>
+                <span className="text-cyan-300">Acme Corp</span>
+                <span className="text-zinc-400"> (</span>
+                <span className="text-purple-400">Admin</span>
                 <span className="text-zinc-400">)</span>
               </div>
               <div>
-                <span className="text-blue-400">public </span>
-                <span className="text-amber-300">documentContent</span>
-                <span className="text-zinc-400">?: </span>
-                <span className="text-cyan-300">DocumentContent</span>
-                <span className="text-zinc-400">;</span>
+                <span className="text-zinc-500">MFA: </span>
+                <span className="text-emerald-400">Enabled</span>
+                <span className="text-zinc-400"> - </span>
+                <span className="text-amber-300">Authenticator App</span>
+              </div>
+              <div>
+                <span className="text-zinc-500">Last sign in: </span>
+                <span className="text-zinc-300">2 hours ago</span>
+                <span className="text-zinc-400"> from </span>
+                <span className="text-zinc-300">San Francisco, CA</span>
               </div>
               <div className="mt-3 text-zinc-400">
-                We would be accessing
-                <span className="text-emerald-400">CachedPromise&lt;DocumentContent&gt;</span>
-                then, and document content would be hydrated.
+                Active sessions:
+                <span className="text-emerald-400"> 2 devices</span>
               </div>
             </div>
           </div>
@@ -278,38 +275,37 @@ export function DashboardMockup() {
           <div className="space-y-2 text-sm mb-5">
             <div className="flex items-center gap-2 text-zinc-500 hover:text-zinc-300 cursor-pointer transition-colors">
               <Plus className="w-4 h-4" />
-              <span>Add sub-issues</span>
+              <span>Add to organization</span>
             </div>
             <div className="flex items-center gap-2 text-zinc-500 hover:text-zinc-300 cursor-pointer transition-colors">
               <Link2 className="w-4 h-4" />
-              <span>Links</span>
+              <span>Manage sessions</span>
             </div>
           </div>
 
-          {/* PR reference */}
+          {/* User ID */}
           <div className="text-xs text-zinc-500 mb-5">
-            <span className="text-zinc-600">#20319</span>
-            <span> igor/eng-135 add source to insights slice and segment</span>
+            <span className="text-zinc-600">ID:</span>
+            <span> user_2xK9mPqR8vNtWz3yJ7hL</span>
           </div>
 
           {/* Activity */}
           <div className="pt-4 border-t border-zinc-800/50">
-            <div className="text-xs text-zinc-500 font-medium mb-3 uppercase tracking-wider">Activity</div>
+            <div className="text-xs text-zinc-500 font-medium mb-3 uppercase tracking-wider">Recent Activity</div>
             <div className="space-y-3">
               <ActivityItem
                 avatar="https://i.pravatar.cc/24?img=1"
-                name="nan"
-                action="moved from"
-                from="Backlog"
-                to="In Progress"
-                time="5 months ago"
+                name="Sarah"
+                action="signed in via"
+                from="Google OAuth"
+                time="2 hours ago"
               />
               <ActivityItem
-                avatar="https://i.pravatar.cc/24?img=2"
-                name="alex"
-                action="commented on"
-                from="this issue"
-                time="5 months ago"
+                avatar="https://i.pravatar.cc/24?img=1"
+                name="Sarah"
+                action="enabled"
+                from="MFA"
+                time="3 days ago"
               />
             </div>
           </div>
@@ -372,9 +368,9 @@ function InboxItem({
   active?: boolean
 }) {
   const statusColors: Record<string, string> = {
-    "in-progress": "bg-yellow-500",
+    "in-progress": "bg-emerald-500",
     todo: "bg-zinc-600",
-    bug: "bg-red-500",
+    bug: "bg-yellow-500",
     done: "bg-emerald-500",
   }
 
