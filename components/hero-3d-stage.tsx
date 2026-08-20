@@ -81,13 +81,16 @@ export function Hero3DStage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="mt-8 flex items-center gap-6"
               >
-                <button className="px-5 py-2.5 bg-white text-zinc-900 font-medium rounded-lg hover:bg-zinc-100 transition-colors text-sm">
-                  Deploy now
-                </button>
-                <button className="text-zinc-300 font-medium hover:text-white transition-colors flex items-center gap-2 text-sm">
+                <a
+                  href="/sign-up"
+                  className="px-5 py-2.5 bg-white text-zinc-900 font-medium rounded-lg hover:bg-zinc-100 transition-colors text-sm"
+                >
+                  Get started
+                </a>
+                <a href="#" className="text-zinc-300 font-medium hover:text-white transition-colors flex items-center gap-2 text-sm">
                   <span className="text-zinc-500">Open source:</span> Star us on GitHub
                   <span aria-hidden="true">→</span>
-                </button>
+                </a>
               </motion.div>
             </div>
           </div>
