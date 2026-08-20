@@ -20,12 +20,6 @@ import {
   MoreHorizontal,
   Settings,
   HelpCircle,
-  CirclePower,
-  Layers,
-  FolderKanban,
-  Smartphone,
-  Map,
-  Sparkles,
 } from "lucide-react"
 
 export function DashboardMockup() {

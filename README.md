@@ -1,30 +1,36 @@
-# Sprint - A Linear Clone
+# Keylio
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+Keylio is a self-hosted authentication platform for modern applications. The goal is to provide Clerk-style developer experience while keeping auth infrastructure under your control.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/akshaywritescodes-projects/v0-sprint-a-linear-clone)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/zwReJX3UsW5)
+## Development
 
-## Overview
+Install dependencies:
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+```bash
+npm install
+```
 
-## Deployment
+Run the local development server:
 
-Your project is live at:
+```bash
+npm run dev
+```
 
-**[https://vercel.com/akshaywritescodes-projects/v0-sprint-a-linear-clone](https://vercel.com/akshaywritescodes-projects/v0-sprint-a-linear-clone)**
+Build for production:
 
-## Build your app
+```bash
+npm run build
+```
 
-Continue building your app on:
+Run lint checks:
 
-**[https://v0.app/chat/zwReJX3UsW5](https://v0.app/chat/zwReJX3UsW5)**
+```bash
+npm run lint
+```
 
-## How It Works
+## Direction
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+- Self-hosted authentication core
+- Drop-in auth components
+- User management, sessions, MFA, SSO, organizations, and webhooks
+- Feature work committed incrementally

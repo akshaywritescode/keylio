@@ -12,13 +12,6 @@ const providers = [
   { name: "Passkeys", isProvider: false, selected: false, icon: "○" },
 ]
 
-const agents = [
-  { name: "Agent 1", isAgent: true, selected: true, icon: "🤖" },
-  { name: "Agent 2", isAgent: true, selected: false, icon: "🤖" },
-  { name: "Agent 3", isAgent: true, selected: false, icon: "🤖" },
-  { name: "Agent 4", isAgent: false, selected: false, icon: "👤" },
-]
-
 export function AISection() {
   return (
     <div className="relative z-20 py-40" style={{ backgroundColor: "#09090B" }}>
