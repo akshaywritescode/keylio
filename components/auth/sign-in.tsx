@@ -5,12 +5,16 @@ type SignInProps = {
   signUpUrl?: string
   forgotPasswordUrl?: string
   afterSignInUrl?: string
+  email?: string
+  verified?: boolean
 }
 
 export function SignIn({
   signUpUrl = "/sign-up",
   forgotPasswordUrl = "/forgot-password",
   afterSignInUrl = "/dashboard",
+  email,
+  verified,
 }: SignInProps) {
   return (
     <AuthCard
@@ -32,8 +36,20 @@ export function SignIn({
       </div>
 
       <form className="space-y-5">
+        {verified ? (
+          <p className="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-sm text-emerald-200">
+            Email verified. You can sign in now.
+          </p>
+        ) : null}
         <input type="hidden" name="redirect_url" value={afterSignInUrl} />
-        <AuthField id="email" label="Email" type="email" placeholder="you@company.com" autoComplete="email" />
+        <AuthField
+          id="email"
+          label="Email"
+          type="email"
+          placeholder="you@company.com"
+          autoComplete="email"
+          defaultValue={email}
+        />
         <PasswordField
           id="password"
           label="Password"

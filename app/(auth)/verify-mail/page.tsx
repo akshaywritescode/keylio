@@ -1,9 +1,17 @@
 import { AuthShell, VerifyEmail } from "@/components/auth"
 
-export default function VerifyMailPage() {
+type VerifyMailPageProps = {
+  searchParams: Promise<{
+    email?: string
+  }>
+}
+
+export default async function VerifyMailPage({ searchParams }: VerifyMailPageProps) {
+  const { email } = await searchParams
+
   return (
     <AuthShell>
-      <VerifyEmail />
+      <VerifyEmail email={email} />
     </AuthShell>
   )
 }
