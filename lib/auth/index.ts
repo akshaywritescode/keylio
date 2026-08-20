@@ -6,4 +6,5 @@ export {
   getAuthSecret,
 } from "./config"
 export { hashPassword } from "./passwords"
+export { createSession, getCurrentSession, requireCurrentUser } from "./session"
 export { createAuthToken, getExpirationDate, hashAuthToken } from "./tokens"

@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { AuthButton, AuthCard, AuthDivider, AuthField, OAuthButtons, PasswordField } from "./auth-shell"
+import { AuthCard, AuthDivider, OAuthButtons } from "./auth-shell"
+import { SignInForm } from "./sign-in-form"
 
 type SignInProps = {
   signUpUrl?: string
@@ -35,34 +36,12 @@ export function SignIn({
         <AuthDivider />
       </div>
 
-      <form className="space-y-5">
-        {verified ? (
-          <p className="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-sm text-emerald-200">
-            Email verified. You can sign in now.
-          </p>
-        ) : null}
-        <input type="hidden" name="redirect_url" value={afterSignInUrl} />
-        <AuthField
-          id="email"
-          label="Email"
-          type="email"
-          placeholder="you@company.com"
-          autoComplete="email"
-          defaultValue={email}
-        />
-        <PasswordField
-          id="password"
-          label="Password"
-          placeholder="Enter your password"
-          autoComplete="current-password"
-          action={
-            <Link href={forgotPasswordUrl} className="text-sm text-zinc-500 transition-colors hover:text-zinc-300">
-              Forgot password?
-            </Link>
-          }
-        />
-        <AuthButton type="submit">Sign in</AuthButton>
-      </form>
+      <SignInForm
+        afterSignInUrl={afterSignInUrl}
+        email={email}
+        forgotPasswordUrl={forgotPasswordUrl}
+        verified={verified}
+      />
     </AuthCard>
   )
 }
