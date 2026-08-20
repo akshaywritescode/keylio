@@ -55,6 +55,27 @@ export async function getCurrentSession() {
   })
 }
 
+export async function revokeCurrentSession() {
+  const cookieStore = await cookies()
+  const token = cookieStore.get(AUTH_COOKIE_NAME)?.value
+
+  if (token) {
+    const tokenHash = hashAuthToken(token)
+
+    await prisma.session.updateMany({
+      where: {
+        tokenHash,
+        revokedAt: null,
+      },
+      data: {
+        revokedAt: new Date(),
+      },
+    })
+  }
+
+  cookieStore.delete(AUTH_COOKIE_NAME)
+}
+
 export async function requireCurrentUser() {
   const session = await getCurrentSession()
 

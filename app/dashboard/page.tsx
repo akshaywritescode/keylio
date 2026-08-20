@@ -1,5 +1,6 @@
 import { KeyRound, ShieldCheck, UserRound } from "lucide-react"
 import { requireCurrentUser } from "@/lib/auth"
+import { SignOutButton } from "./sign-out-button"
 
 export default async function DashboardPage() {
   const user = await requireCurrentUser()
@@ -12,7 +13,7 @@ export default async function DashboardPage() {
             <KeyRound className="h-5 w-5" />
             Keylio
           </div>
-          <div className="text-sm text-zinc-500">Dashboard</div>
+          <SignOutButton />
         </header>
 
         <section className="grid flex-1 content-center gap-6 py-16">
