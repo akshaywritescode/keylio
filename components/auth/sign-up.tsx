@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { AuthButton, AuthCard, AuthDivider, AuthField, OAuthButtons, PasswordField } from "./auth-shell"
+import { AuthCard, AuthDivider, OAuthButtons } from "./auth-shell"
+import { SignUpForm } from "./sign-up-form"
 
 type SignUpProps = {
   signInUrl?: string
@@ -26,18 +27,7 @@ export function SignUp({ signInUrl = "/sign-in", afterSignUpUrl = "/verify-mail"
         <AuthDivider />
       </div>
 
-      <form className="space-y-5">
-        <input type="hidden" name="redirect_url" value={afterSignUpUrl} />
-        <AuthField id="name" label="Name" placeholder="Akshay" autoComplete="name" />
-        <AuthField id="email" label="Email" type="email" placeholder="you@company.com" autoComplete="email" />
-        <PasswordField
-          id="password"
-          label="Password"
-          placeholder="Create a password"
-          autoComplete="new-password"
-        />
-        <AuthButton type="submit">Create account</AuthButton>
-      </form>
+      <SignUpForm afterSignUpUrl={afterSignUpUrl} />
     </AuthCard>
   )
 }

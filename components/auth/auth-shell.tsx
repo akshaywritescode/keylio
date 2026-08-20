@@ -72,9 +72,11 @@ type AuthFieldProps = {
   type?: string
   placeholder: string
   autoComplete?: string
+  defaultValue?: string
+  error?: string
 }
 
-export function AuthField({ id, label, type = "text", placeholder, autoComplete }: AuthFieldProps) {
+export function AuthField({ id, label, type = "text", placeholder, autoComplete, defaultValue, error }: AuthFieldProps) {
   return (
     <div className="space-y-2">
       <label htmlFor={id} className="text-sm font-medium text-zinc-300">
@@ -86,8 +88,16 @@ export function AuthField({ id, label, type = "text", placeholder, autoComplete 
         type={type}
         placeholder={placeholder}
         autoComplete={autoComplete}
+        defaultValue={defaultValue}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
         className="h-11 w-full rounded-md border border-zinc-800 bg-zinc-900 px-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-600 focus:border-zinc-600 focus:ring-2 focus:ring-zinc-800"
       />
+      {error ? (
+        <p id={`${id}-error`} className="text-sm text-red-300">
+          {error}
+        </p>
+      ) : null}
     </div>
   )
 }
@@ -96,7 +106,7 @@ type PasswordFieldProps = Omit<AuthFieldProps, "type"> & {
   action?: ReactNode
 }
 
-export function PasswordField({ id, label, placeholder, autoComplete, action }: PasswordFieldProps) {
+export function PasswordField({ id, label, placeholder, autoComplete, action, error }: PasswordFieldProps) {
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between gap-4">
@@ -111,8 +121,15 @@ export function PasswordField({ id, label, placeholder, autoComplete, action }: 
         type="password"
         placeholder={placeholder}
         autoComplete={autoComplete}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
         className="h-11 w-full rounded-md border border-zinc-800 bg-zinc-900 px-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-600 focus:border-zinc-600 focus:ring-2 focus:ring-zinc-800"
       />
+      {error ? (
+        <p id={`${id}-error`} className="text-sm text-red-300">
+          {error}
+        </p>
+      ) : null}
     </div>
   )
 }
@@ -121,9 +138,10 @@ type AuthButtonProps = {
   children: ReactNode
   variant?: "primary" | "secondary"
   type?: "button" | "submit"
+  disabled?: boolean
 }
 
-export function AuthButton({ children, variant = "primary", type = "button" }: AuthButtonProps) {
+export function AuthButton({ children, variant = "primary", type = "button", disabled }: AuthButtonProps) {
   const styles =
     variant === "primary"
       ? "border-white bg-white text-zinc-950 hover:bg-zinc-200"
@@ -132,7 +150,8 @@ export function AuthButton({ children, variant = "primary", type = "button" }: A
   return (
     <button
       type={type}
-      className={`flex h-11 w-full items-center justify-center rounded-md border px-4 text-sm font-medium transition-colors ${styles}`}
+      disabled={disabled}
+      className={`flex h-11 w-full items-center justify-center rounded-md border px-4 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60 ${styles}`}
     >
       {children}
     </button>

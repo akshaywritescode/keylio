@@ -5,4 +5,5 @@ export {
   SESSION_DURATION_SECONDS,
   getAuthSecret,
 } from "./config"
+export { hashPassword } from "./passwords"
 export { createAuthToken, getExpirationDate, hashAuthToken } from "./tokens"
