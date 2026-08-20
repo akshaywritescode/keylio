@@ -1,15 +1,12 @@
 import type { ReactNode } from "react"
 import Link from "next/link"
-import { KeyRound } from "lucide-react"
+import { Github, KeyRound } from "lucide-react"
 
 type AuthShellProps = {
-  title: string
-  description: string
   children: ReactNode
-  footer?: ReactNode
 }
 
-export function AuthShell({ title, description, children, footer }: AuthShellProps) {
+export function AuthShell({ children }: AuthShellProps) {
   return (
     <main className="min-h-screen bg-[#09090B] text-white">
       <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6">
@@ -39,18 +36,33 @@ export function AuthShell({ title, description, children, footer }: AuthShellPro
           </div>
 
           <div className="w-full">
-            <div className="rounded-lg border border-zinc-800 bg-zinc-950/80 p-6 shadow-2xl shadow-black/40 sm:p-8">
-              <div className="mb-8">
-                <h2 className="text-2xl font-medium tracking-normal text-white">{title}</h2>
-                <p className="mt-2 text-sm leading-6 text-zinc-500">{description}</p>
-              </div>
-              {children}
-            </div>
-            {footer ? <div className="mt-6 text-center text-sm text-zinc-500">{footer}</div> : null}
+            {children}
           </div>
         </section>
       </div>
     </main>
+  )
+}
+
+type AuthCardProps = {
+  title: string
+  description: string
+  children: ReactNode
+  footer?: ReactNode
+}
+
+export function AuthCard({ title, description, children, footer }: AuthCardProps) {
+  return (
+    <>
+      <div className="rounded-lg border border-zinc-800 bg-zinc-950/80 p-6 shadow-2xl shadow-black/40 sm:p-8">
+        <div className="mb-8">
+          <h2 className="text-2xl font-medium tracking-normal text-white">{title}</h2>
+          <p className="mt-2 text-sm leading-6 text-zinc-500">{description}</p>
+        </div>
+        {children}
+      </div>
+      {footer ? <div className="mt-6 text-center text-sm text-zinc-500">{footer}</div> : null}
+    </>
   )
 }
 
@@ -80,6 +92,31 @@ export function AuthField({ id, label, type = "text", placeholder, autoComplete 
   )
 }
 
+type PasswordFieldProps = Omit<AuthFieldProps, "type"> & {
+  action?: ReactNode
+}
+
+export function PasswordField({ id, label, placeholder, autoComplete, action }: PasswordFieldProps) {
+  return (
+    <div className="space-y-2">
+      <div className="flex items-center justify-between gap-4">
+        <label htmlFor={id} className="text-sm font-medium text-zinc-300">
+          {label}
+        </label>
+        {action}
+      </div>
+      <input
+        id={id}
+        name={id}
+        type="password"
+        placeholder={placeholder}
+        autoComplete={autoComplete}
+        className="h-11 w-full rounded-md border border-zinc-800 bg-zinc-900 px-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-600 focus:border-zinc-600 focus:ring-2 focus:ring-zinc-800"
+      />
+    </div>
+  )
+}
+
 type AuthButtonProps = {
   children: ReactNode
   variant?: "primary" | "secondary"
@@ -99,6 +136,18 @@ export function AuthButton({ children, variant = "primary", type = "button" }: A
     >
       {children}
     </button>
+  )
+}
+
+export function OAuthButtons() {
+  return (
+    <div className="grid gap-3 sm:grid-cols-2">
+      <AuthButton variant="secondary">
+        <Github className="mr-2 h-4 w-4" />
+        GitHub
+      </AuthButton>
+      <AuthButton variant="secondary">Google</AuthButton>
+    </div>
   )
 }
 
