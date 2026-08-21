@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { KeyRound, ShieldCheck, UserRound } from "lucide-react"
 import { requireCurrentUser } from "@/lib/auth"
 import { SignOutButton } from "./sign-out-button"
@@ -25,7 +26,7 @@ export default async function DashboardPage() {
             </p>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-lg border border-zinc-800 bg-zinc-950/80 p-5">
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-zinc-900">
                 <UserRound className="h-5 w-5 text-zinc-300" />
@@ -42,6 +43,13 @@ export default async function DashboardPage() {
                 {user.emailVerifiedAt ? user.emailVerifiedAt.toLocaleString() : "Not verified"}
               </p>
             </div>
+            <Link href="/dashboard/sessions" className="rounded-lg border border-zinc-800 bg-zinc-950/80 p-5 transition-colors hover:border-zinc-700">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-zinc-900">
+                <ShieldCheck className="h-5 w-5 text-blue-400" />
+              </div>
+              <h2 className="font-medium text-white">Sessions</h2>
+              <p className="mt-2 text-sm text-zinc-500">Review and revoke active devices.</p>
+            </Link>
           </div>
         </section>
       </div>
