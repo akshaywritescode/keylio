@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client"
 import { redirect } from "next/navigation"
 import { z } from "zod"
 import { prisma } from "@/lib/db/prisma"
+import { sendEmailVerificationEmail } from "@/lib/email"
 import { EMAIL_VERIFICATION_TOKEN_SECONDS, createAuthToken, getExpirationDate, hashAuthToken } from "@/lib/auth"
 import { hashPassword } from "@/lib/auth/passwords"
 
@@ -103,6 +104,10 @@ export async function signUpAction(_: SignUpActionState, formData: FormData): Pr
     }
   }
 
-  console.info(`Keylio verification token for ${email}: ${verificationToken}`)
+  await sendEmailVerificationEmail({
+    email,
+    token: verificationToken,
+  })
+
   redirect(`${parsed.data.redirectUrl}?email=${encodeURIComponent(email)}`)
 }

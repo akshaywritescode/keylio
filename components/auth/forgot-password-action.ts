@@ -3,6 +3,7 @@
 import { z } from "zod"
 import { createAuthToken, getExpirationDate, hashAuthToken, PASSWORD_RESET_TOKEN_SECONDS } from "@/lib/auth"
 import { prisma } from "@/lib/db/prisma"
+import { sendPasswordResetEmail } from "@/lib/email"
 
 export type ForgotPasswordActionState = {
   values?: {
@@ -63,11 +64,14 @@ export async function forgotPasswordAction(
       },
     })
 
-    console.info(`Keylio password reset token for ${email}: ${resetToken}`)
+    await sendPasswordResetEmail({
+      email,
+      token: resetToken,
+    })
   }
 
   return {
     values,
-    success: "If an account exists for that email, a reset token has been generated.",
+    success: "If an account exists for that email, a reset link has been generated.",
   }
 }

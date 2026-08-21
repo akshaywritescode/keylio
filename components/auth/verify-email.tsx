@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { MailCheck } from "lucide-react"
 import { AuthCard } from "./auth-shell"
+import { ResendVerificationForm } from "./resend-verification-form"
 import { VerifyEmailForm } from "./verify-email-form"
 
 type VerifyEmailProps = {
@@ -26,6 +27,9 @@ export function VerifyEmail({ email, signInUrl = "/sign-in" }: VerifyEmailProps)
         <MailCheck className="h-6 w-6 text-emerald-400" />
       </div>
       <VerifyEmailForm email={email} />
+      <div className="mt-5 border-t border-zinc-900 pt-5">
+        <ResendVerificationForm email={email} />
+      </div>
     </AuthCard>
   )
 }

@@ -39,7 +39,7 @@ export function ResetPasswordForm({ afterResetUrl, email, token }: ResetPassword
       <AuthField
         id="token"
         label="Reset token"
-        placeholder="Paste the token from your server log"
+        placeholder="Paste the token from your dev email link"
         autoComplete="one-time-code"
         defaultValue={state.values?.token}
         error={state.errors?.token}
