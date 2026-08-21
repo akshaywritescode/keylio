@@ -1,12 +1,17 @@
 import Link from "next/link"
-import { AuthButton, AuthCard, PasswordField } from "./auth-shell"
+import { AuthCard } from "./auth-shell"
+import { ResetPasswordForm } from "./reset-password-form"
 
 type ResetPasswordProps = {
+  email?: string
+  token?: string
   forgotPasswordUrl?: string
   afterResetUrl?: string
 }
 
 export function ResetPassword({
+  email,
+  token,
   forgotPasswordUrl = "/forgot-password",
   afterResetUrl = "/sign-in",
 }: ResetPasswordProps) {
@@ -23,22 +28,7 @@ export function ResetPassword({
         </>
       }
     >
-      <form className="space-y-5">
-        <input type="hidden" name="redirect_url" value={afterResetUrl} />
-        <PasswordField
-          id="password"
-          label="New password"
-          placeholder="Enter a new password"
-          autoComplete="new-password"
-        />
-        <PasswordField
-          id="confirm-password"
-          label="Confirm password"
-          placeholder="Confirm your new password"
-          autoComplete="new-password"
-        />
-        <AuthButton type="submit">Update password</AuthButton>
-      </form>
+      <ResetPasswordForm afterResetUrl={afterResetUrl} email={email} token={token} />
     </AuthCard>
   )
 }

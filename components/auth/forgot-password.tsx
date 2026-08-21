@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { AuthButton, AuthCard, AuthField } from "./auth-shell"
+import { AuthCard } from "./auth-shell"
+import { ForgotPasswordForm } from "./forgot-password-form"
 
 type ForgotPasswordProps = {
   signInUrl?: string
@@ -19,10 +20,7 @@ export function ForgotPassword({ signInUrl = "/sign-in" }: ForgotPasswordProps) 
         </>
       }
     >
-      <form className="space-y-5">
-        <AuthField id="email" label="Email" type="email" placeholder="you@company.com" autoComplete="email" />
-        <AuthButton type="submit">Send reset link</AuthButton>
-      </form>
+      <ForgotPasswordForm />
     </AuthCard>
   )
 }

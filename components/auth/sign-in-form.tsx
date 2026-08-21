@@ -10,10 +10,11 @@ type SignInFormProps = {
   afterSignInUrl: string
   email?: string
   forgotPasswordUrl: string
+  reset?: boolean
   verified?: boolean
 }
 
-export function SignInForm({ afterSignInUrl, email, forgotPasswordUrl, verified }: SignInFormProps) {
+export function SignInForm({ afterSignInUrl, email, forgotPasswordUrl, reset, verified }: SignInFormProps) {
   const [state, formAction] = useActionState(signInAction, {
     values: {
       email,
@@ -25,6 +26,11 @@ export function SignInForm({ afterSignInUrl, email, forgotPasswordUrl, verified 
       {verified ? (
         <p className="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-sm text-emerald-200">
           Email verified. You can sign in now.
+        </p>
+      ) : null}
+      {reset ? (
+        <p className="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-sm text-emerald-200">
+          Password updated. You can sign in now.
         </p>
       ) : null}
       {state.errors?.form ? (

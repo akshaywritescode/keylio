@@ -8,6 +8,7 @@ type SignInProps = {
   afterSignInUrl?: string
   email?: string
   verified?: boolean
+  reset?: boolean
 }
 
 export function SignIn({
@@ -16,6 +17,7 @@ export function SignIn({
   afterSignInUrl = "/dashboard",
   email,
   verified,
+  reset,
 }: SignInProps) {
   return (
     <AuthCard
@@ -40,6 +42,7 @@ export function SignIn({
         afterSignInUrl={afterSignInUrl}
         email={email}
         forgotPasswordUrl={forgotPasswordUrl}
+        reset={reset}
         verified={verified}
       />
     </AuthCard>

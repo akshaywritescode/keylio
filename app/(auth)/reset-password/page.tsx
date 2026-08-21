@@ -1,9 +1,18 @@
 import { AuthShell, ResetPassword } from "@/components/auth"
 
-export default function ResetPasswordPage() {
+type ResetPasswordPageProps = {
+  searchParams: Promise<{
+    email?: string
+    token?: string
+  }>
+}
+
+export default async function ResetPasswordPage({ searchParams }: ResetPasswordPageProps) {
+  const { email, token } = await searchParams
+
   return (
     <AuthShell>
-      <ResetPassword />
+      <ResetPassword email={email} token={token} />
     </AuthShell>
   )
 }
